@@ -9,6 +9,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -17,12 +18,15 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 public class PortableCraftBenchMod
 {
     public static final String MODID = "pcb";
-    public static final String VERSION = "${version}";
+    public static final String VERSION = "1.1";
     
     public static final int GUI_PORTABLE_CRAFT_BENCH_ID = 1;
     
     @Instance(PortableCraftBenchMod.MODID)
     public static PortableCraftBenchMod instance;
+    
+    @SidedProxy(clientSide = "com.renevo.pcb.ClientProxy", serverSide = "com.renevo.pcb.CommonProxy")
+    public static CommonProxy proxy;
     
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -36,26 +40,6 @@ public class PortableCraftBenchMod
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-    	NeiIntegration.registerCraftingContainers(GuiPortableCraftBench.class);
-    	
-    	// probably remove these at some point, dunno....
-    	
-    	// tinkers
-    	NeiIntegration.registerCraftingContainers("tconstruct.client.gui.CraftingStationGui");
-
-    	// BC
-    	NeiIntegration.registerCraftingContainers("buildcraft.factory.gui.GuiAutoCrafting");
-    	
-    	// doesn't work
-    	//NeiIntegration.registerCraftingContainers("buildcraft.silicon.gui.GuiAdvancedCraftingTable");
-    	
-    	// Forestry is dumb...
-    	// NeiIntegration.registerCraftingContainers("forestry.factory.gui.GuiWorktable");
-    	
-    	// Bibliocraft
-    	NeiIntegration.registerCraftingContainers("jds.bibliocraft.gui.GuiFancyWorkbench");
-    	
-    	// Railcraft
-    	NeiIntegration.registerCraftingContainers("mods.railcraft.client.gui.GuiCartWork");
+    	proxy.postInitialization();
     }
 }
