@@ -1,0 +1,16 @@
+[
+{
+  "modid": "pcb",
+  "name": "Portable Craft Bench",
+  "description": "Simple mod that adds a portable crafting bench.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/RenEvo/pcb",
+  "updateUrl": "",
+  "authors": ["RenEvo"],
+  "credits": "Burpcraft guys!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,12 +1,19 @@
-*.class
+# eclipse folders
+bin/
+build/
+eclipse/
+.metadata/
+.project
+.settings/
+*.classpath
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# gradle
+.gradle/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# forge stuff
+CREDITS-fml.txt
+LICENSE-fml.txt
+MinecraftForge-Credits.txt
+MinecraftForge-License.txt
+README.txt
+forge-1.7.2-10.12.1.1060-changelog.txt
