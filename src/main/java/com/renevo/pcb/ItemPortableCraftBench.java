@@ -38,7 +38,7 @@ public class ItemPortableCraftBench extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
 		
-		if (world.isRemote){
+		if (world.isRemote) {
 			return player.getCurrentEquippedItem();
 		} else {
 			player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);

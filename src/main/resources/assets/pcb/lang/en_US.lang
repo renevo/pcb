@@ -1,1 +1,4 @@
-item.portableCraftBench.name=Portable Craft Bench
+item.portableCraftBench.name=Portable Crafting Bench
+
+achievement.waffle=Take it with you!
+achievement.waffle.desc=Craft a portable crafting bench with string and a workbench.
