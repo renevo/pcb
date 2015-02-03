@@ -26,8 +26,7 @@ Minecraft Portable Workbench
 
 Working with the code
 
-    gradlew setupDevWorkspace
-    gradlew eclipse
+    gradlew setupDecompWorkspace
     gradlew build
 
 

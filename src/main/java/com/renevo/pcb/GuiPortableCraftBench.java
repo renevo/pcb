@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -13,8 +13,8 @@ public class GuiPortableCraftBench extends GuiContainer {
 
 	private static final ResourceLocation backgroundResourceLocation = new ResourceLocation("textures/gui/container/crafting_table.png");
 	
-	public GuiPortableCraftBench(InventoryPlayer playerInventory, World world, int x, int y, int z) {
-		super(new ContainerPortableCraftBench(playerInventory, world, x, y, z));
+	public GuiPortableCraftBench(InventoryPlayer playerInventory, World world, BlockPos pos) {
+		super(new ContainerPortableCraftBench(playerInventory, world, pos));
 	}
 
 	@Override

@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraftforge.fml.common.FMLLog;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-
 public class NeiIntegration 
 {
 	public static void registerCraftingContainers(Class<?> craftingContainer) {

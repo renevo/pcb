@@ -1,11 +1,7 @@
 package com.renevo.pcb;
 
-import org.apache.logging.log4j.Level;
-
-import net.minecraft.init.Blocks;
 import net.minecraft.stats.*;
 import net.minecraftforge.common.*;
-import net.minecraftforge.common.config.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
@@ -41,6 +37,8 @@ public class PortableCraftBenchMod {
     	// 6 left, 0 up/down - since we are just adding a new achievement, we don't need an achievement page, this somehow just works...
     	achievementPcb = new Achievement("achievement.pcb", "pcb", 6, 0, ItemPortableCraftBench.portableCraftBench, net.minecraft.stats.AchievementList.buildWorkBench);
     	achievementPcb.registerStat();
+    	
+    	proxy.initialization();
     }
     
     @EventHandler

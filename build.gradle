@@ -24,6 +24,7 @@ archivesBaseName = "portablecraftbench"
 minecraft {
     version = "1.8-11.14.0.1298"
     runDir = "eclipse"
+	mappings = 'snapshot_nodoc_20141130'
 }
 
 processResources

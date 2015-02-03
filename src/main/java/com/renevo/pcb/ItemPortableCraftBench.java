@@ -1,9 +1,6 @@
 package com.renevo.pcb;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.*;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -32,7 +29,6 @@ public class ItemPortableCraftBench extends Item {
 		setMaxStackSize(1);
 		setUnlocalizedName("portableCraftBench");
 		setCreativeTab(CreativeTabs.tabTools);
-		setTextureName(PortableCraftBenchMod.MODID + ":" + "portableCraftBench");
 	}
 	
 	@Override
@@ -44,11 +40,5 @@ public class ItemPortableCraftBench extends Item {
 			player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);
 			return player.getCurrentEquippedItem();
 		}
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon(PortableCraftBenchMod.MODID + ":" + "portableCraftBench");
 	}
 }

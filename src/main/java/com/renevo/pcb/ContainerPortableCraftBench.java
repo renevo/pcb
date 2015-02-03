@@ -4,13 +4,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class ContainerPortableCraftBench extends net.minecraft.inventory.ContainerWorkbench {
 
-	public ContainerPortableCraftBench(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
-		super(inventoryPlayer, world, x, y, z);
+	public ContainerPortableCraftBench(InventoryPlayer inventoryPlayer, World world, BlockPos pos) {
+		super(inventoryPlayer, world, pos);
 	}
 
 	/**
