@@ -6,12 +6,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.stats.*;
 import net.minecraftforge.common.*;
 import net.minecraftforge.common.config.*;
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.Mod.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.eventhandler.*;
-import cpw.mods.fml.common.gameevent.*;
-import cpw.mods.fml.common.network.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.Mod.*;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.eventhandler.*;
+import net.minecraftforge.fml.common.gameevent.*;
+import net.minecraftforge.fml.common.network.*;
 
 @Mod(modid = PortableCraftBenchMod.MODID, version = PortableCraftBenchMod.VERSION)
 public class PortableCraftBenchMod {

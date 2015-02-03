@@ -5,8 +5,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class PortableCraftBenchGuiHandler implements IGuiHandler {
 
