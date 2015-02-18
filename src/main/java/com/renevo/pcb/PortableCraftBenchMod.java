@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.network.*;
 public class PortableCraftBenchMod {
 	
     public static final String MODID = "pcb";
-    public static final String VERSION = "1.3";
+    public static final String VERSION = "1.4";
     
     public static Achievement achievementPcb = null;
     
