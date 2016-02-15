@@ -53,6 +53,16 @@ minecraft {
     mappings = config.mappings
     runDir = "run"
     replace '${version}', project.version
+    useDepAts = true
+}
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+    deobfCompile "mezz.jei:jei_" + config.minecraft_version + ":" + config.jei_version
 }
 
 processResources

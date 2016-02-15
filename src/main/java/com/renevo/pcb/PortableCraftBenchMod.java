@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.network.*;
 public class PortableCraftBenchMod {
 	
     public static final String MODID = "pcb";
-    public static final String VERSION = "1.5";
+    public static final String VERSION = "1.5.0";
     
     public static Achievement achievementPcb = null;
     
@@ -34,7 +34,7 @@ public class PortableCraftBenchMod {
     	MinecraftForge.EVENT_BUS.register(this);
 
     	// 6 left, 0 up/down - since we are just adding a new achievement, we don't need an achievement page, this somehow just works...
-    	achievementPcb = new Achievement("achievement.pcb", "pcb", 6, 0, ItemPortableCraftBench.portableCraftBench, net.minecraft.stats.AchievementList.buildWorkBench);
+    	achievementPcb = new Achievement("achievement.pcb", "pcb", 5, -4, ItemPortableCraftBench.portableCraftBench, net.minecraft.stats.AchievementList.buildWorkBench);
     	achievementPcb.registerStat();
     	
     	proxy.initialization();
