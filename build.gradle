@@ -1,6 +1,8 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
+        jcenter()
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -11,26 +13,50 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
 
-apply plugin: 'forge'
+repositories {
+    maven {
+        name 'CB Maven FS'
+        url "http://chickenbones.net/maven/"
+    }
+    maven {
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name 'forge'
+        url 'http://files.minecraftforge.net/maven'
+    }
+}
 
-version = "1.8-1.4"
-group= "com.renevo" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+group= "com.renevo.pcb" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "portablecraftbench"
 
+// External properties
+ext.configFile = file "build.properties"
+configFile.withReader {
+    // Load config.  It shall from now be referenced as simply config or project.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.minecraft_version}-${config.mod_version}"
+
 minecraft {
-    version = "1.8-11.14.0.1298"
-    runDir = "eclipse"
-	mappings = 'snapshot_nodoc_20141130'
+    version = config.minecraft_version + "-" + config.forge_version
+    mappings = config.mappings
+    runDir = "run"
+    replace '${version}', project.version
 }
 
 processResources
 {
-    exclude '**/*.xcf'
-    
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
@@ -38,11 +64,11 @@ processResources
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
+
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'

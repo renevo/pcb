@@ -1,3 +1,7 @@
+# intellij stuff
+.idea
+*.iml
+
 # eclipse folders
 bin/
 build/
@@ -9,11 +13,4 @@ eclipse/
 
 # gradle
 .gradle/
-
-# forge stuff
-CREDITS-fml.txt
-LICENSE-fml.txt
-MinecraftForge-Credits.txt
-MinecraftForge-License.txt
-README.txt
-forge-1.7.2-10.12.1.1060-changelog.txt
+run
