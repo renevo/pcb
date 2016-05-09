@@ -1,5 +1,8 @@
 package com.renevo.pcb;
 
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,12 +17,13 @@ public class ItemPortableCraftBench extends Item {
 	
 	public static void create() {
 		portableCraftBench = new ItemPortableCraftBench();
-		GameRegistry.registerItem(portableCraftBench, "portableCraftBench");
+        portableCraftBench.setRegistryName("portableCraftBench");
+        GameRegistry.register(portableCraftBench);
 		GameRegistry.addShapelessRecipe(
-				new ItemStack(portableCraftBench), 
-				new Object[] { 
-							Blocks.crafting_table, 
-							Items.string 
+				new ItemStack(portableCraftBench),
+				new Object[] {
+							Blocks.crafting_table,
+							Items.string
 						});
 	}
 	
@@ -30,15 +34,14 @@ public class ItemPortableCraftBench extends Item {
 		setUnlocalizedName("portableCraftBench");
 		setCreativeTab(CreativeTabs.tabTools);
 	}
-	
+
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-		
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
 		if (world.isRemote) {
-			return player.getCurrentEquippedItem();
+			return ActionResult.newResult(EnumActionResult.PASS, itemStack);
 		} else {
 			player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);
-			return player.getCurrentEquippedItem();
+			return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
 		}
 	}
 }
