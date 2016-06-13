@@ -34,7 +34,7 @@ public class PortableCraftBenchMod {
     	MinecraftForge.EVENT_BUS.register(this);
 
     	// 6 left, 0 up/down - since we are just adding a new achievement, we don't need an achievement page, this somehow just works...
-    	achievementPcb = new Achievement("achievement.pcb", "pcb", 5, -4, ItemPortableCraftBench.portableCraftBench, net.minecraft.stats.AchievementList.buildWorkBench);
+    	achievementPcb = new Achievement("achievement.pcb", "pcb", 5, -4, ItemPortableCraftBench.portableCraftBench, AchievementList.BUILD_WORK_BENCH);
     	achievementPcb.registerStat();
     	
     	proxy.initialization();

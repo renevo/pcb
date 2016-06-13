@@ -22,23 +22,23 @@ public class ItemPortableCraftBench extends Item {
 		GameRegistry.addShapelessRecipe(
 				new ItemStack(portableCraftBench),
 				new Object[] {
-							Blocks.crafting_table,
-							Items.string
+							Blocks.CRAFTING_TABLE,
+							Items.STRING
 						});
 	}
 	
 	public ItemPortableCraftBench() {
 		super();
 		
-		setMaxStackSize(1);
-		setUnlocalizedName("portableCraftBench");
-		setCreativeTab(CreativeTabs.tabTools);
+		super.setMaxStackSize(1);
+		super.setUnlocalizedName("portableCraftBench");
+		super.setCreativeTab(CreativeTabs.TOOLS);
 	}
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
 		if (world.isRemote) {
-			return ActionResult.newResult(EnumActionResult.PASS, itemStack);
+			return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
 		} else {
 			player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);
 			return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
