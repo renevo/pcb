@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemPortableCraftBench extends Item {
 
@@ -25,6 +26,9 @@ public class ItemPortableCraftBench extends Item {
 							Blocks.CRAFTING_TABLE,
 							Items.STRING
 						});
+
+		// adds the pcb as a workbench in the Ore Dictionary
+		OreDictionary.registerOre("workbench", portableCraftBench);
 	}
 	
 	public ItemPortableCraftBench() {
