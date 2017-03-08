@@ -1,4 +1,4 @@
-item.portableCraftBench.name=Portable Crafting Bench
+item.portable_craft_bench.name=Portable Crafting Bench
 
 achievement.pcb=Take it with you!
 achievement.pcb.desc=Craft a portable crafting bench with string and a workbench.

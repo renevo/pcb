@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "pcb:items/portableCraftBench"
+		"layer0": "pcb:items/portable_craft_bench"
 	}
 }

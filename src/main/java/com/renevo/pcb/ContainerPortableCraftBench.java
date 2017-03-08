@@ -9,60 +9,60 @@ import net.minecraft.world.World;
 
 public class ContainerPortableCraftBench extends net.minecraft.inventory.ContainerWorkbench {
 
-	public ContainerPortableCraftBench(InventoryPlayer inventoryPlayer, World world, BlockPos pos) {
-		super(inventoryPlayer, world, pos);
-	}
+    public ContainerPortableCraftBench(InventoryPlayer inventoryPlayer, World world, BlockPos pos) {
+        super(inventoryPlayer, world, pos);
+    }
 
-	/**
-	 * Called to transfer a stack from one inventory to the other eg. when shift
-	 * clicking.
-	 */
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		ItemStack var2 = null;
-		Slot var3 = (Slot) this.inventorySlots.get(slotIndex);
+    /**
+     * Called to transfer a stack from one inventory to the other eg. when shift
+     * clicking.
+     */
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
+        ItemStack stack = null;
+        Slot slot = this.inventorySlots.get(slotIndex);
 
-		if (var3 != null && var3.getHasStack()) {
-			ItemStack var4 = var3.getStack();
-			var2 = var4.copy();
+        if (slot != null && slot.getHasStack()) {
+            ItemStack slotStack = slot.getStack();
+            stack = slotStack.copy();
 
-			if (slotIndex == 0) {
-				if (!this.mergeItemStack(var4, 10, 46, true)) {
-					return null;
-				}
+            if (slotIndex == 0) {
+                if (!this.mergeItemStack(slotStack, 10, 46, true)) {
+                    return null;
+                }
 
-				var3.onSlotChange(var4, var2);
-			} else if (slotIndex >= 10 && slotIndex < 37) {
-				if (!this.mergeItemStack(var4, 1, 10, false)) {
-					return null;
-				}
-			} else if (slotIndex >= 37 && slotIndex < 46) {
-				if (!this.mergeItemStack(var4, 1, 10, false)) {
-					return null;
-				}
-			} else if (!this.mergeItemStack(var4, 10, 46, false)) {
-				return null;
-			}
+                slot.onSlotChange(slotStack, stack);
+            } else if (slotIndex >= 10 && slotIndex < 37) {
+                if (!this.mergeItemStack(slotStack, 1, 10, false)) {
+                    return null;
+                }
+            } else if (slotIndex >= 37 && slotIndex < 46) {
+                if (!this.mergeItemStack(slotStack, 1, 10, false)) {
+                    return null;
+                }
+            } else if (!this.mergeItemStack(slotStack, 10, 46, false)) {
+                return null;
+            }
 
-			if (var4.stackSize == 0) {
-				var3.putStack((ItemStack) null);
-			} else {
-				var3.onSlotChanged();
-			}
+            if (slotStack.isEmpty()) {
+                slot.putStack(ItemStack.EMPTY);
+            } else {
+                slot.onSlotChanged();
+            }
 
-			if (var4.stackSize == var2.stackSize) {
-				return null;
-			}
+            if (slotStack.getCount() == stack.getCount()) {
+                return null;
+            }
 
-			var3.onPickupFromSlot(player, var4);
-		}
+            slot.onTake(player, slotStack);
+        }
 
-		return var2;
-	}
+        return stack;
+    }
 
-	@Override
-	public boolean canInteractWith(EntityPlayer arg0) {
-		return true;
-	}
+    @Override
+    public boolean canInteractWith(EntityPlayer arg0) {
+        return true;
+    }
 
 }

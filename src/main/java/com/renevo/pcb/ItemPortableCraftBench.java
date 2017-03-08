@@ -14,38 +14,37 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemPortableCraftBench extends Item {
 
-	public static Item portableCraftBench;
-	
-	public static void create() {
-		portableCraftBench = new ItemPortableCraftBench();
-        portableCraftBench.setRegistryName("portableCraftBench");
+    public static Item portableCraftBench;
+
+    public static void create() {
+        portableCraftBench = new ItemPortableCraftBench();
+        portableCraftBench.setRegistryName("portable_craft_bench");
         GameRegistry.register(portableCraftBench);
-		GameRegistry.addShapelessRecipe(
-				new ItemStack(portableCraftBench),
-				new Object[] {
-							Blocks.CRAFTING_TABLE,
-							Items.STRING
-						});
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(portableCraftBench),
+                Blocks.CRAFTING_TABLE,
+                Items.STRING);
 
-		// adds the pcb as a workbench in the Ore Dictionary
-		OreDictionary.registerOre("workbench", portableCraftBench);
-	}
-	
-	public ItemPortableCraftBench() {
-		super();
-		
-		super.setMaxStackSize(1);
-		super.setUnlocalizedName("portableCraftBench");
-		super.setCreativeTab(CreativeTabs.TOOLS);
-	}
+        // adds the pcb as a workbench in the Ore Dictionary
+        OreDictionary.registerOre("workbench", portableCraftBench);
+    }
 
-	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStack, World world, EntityPlayer player, EnumHand hand) {
-		if (world.isRemote) {
-			return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
-		} else {
-			player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);
-			return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
-		}
-	}
+    public ItemPortableCraftBench() {
+        super();
+
+        super.setMaxStackSize(1);
+        super.setUnlocalizedName("portable_craft_bench");
+        super.setCreativeTab(CreativeTabs.TOOLS);
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack item = player.getHeldItem(hand);
+
+        if (!world.isRemote && item.getItem() == this) {
+            player.openGui(PortableCraftBenchMod.instance, PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID, world, 0, 0, 0);
+        }
+
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+    }
 }
