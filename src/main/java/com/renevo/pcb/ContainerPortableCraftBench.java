@@ -19,7 +19,7 @@ public class ContainerPortableCraftBench extends net.minecraft.inventory.Contain
      */
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-        ItemStack stack = null;
+        ItemStack stack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(slotIndex);
 
         if (slot != null && slot.getHasStack()) {
@@ -28,20 +28,20 @@ public class ContainerPortableCraftBench extends net.minecraft.inventory.Contain
 
             if (slotIndex == 0) {
                 if (!this.mergeItemStack(slotStack, 10, 46, true)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(slotStack, stack);
             } else if (slotIndex >= 10 && slotIndex < 37) {
                 if (!this.mergeItemStack(slotStack, 1, 10, false)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             } else if (slotIndex >= 37 && slotIndex < 46) {
                 if (!this.mergeItemStack(slotStack, 1, 10, false)) {
-                    return null;
+                    return ItemStack.EMPTY;
                 }
             } else if (!this.mergeItemStack(slotStack, 10, 46, false)) {
-                return null;
+                return ItemStack.EMPTY;
             }
 
             if (slotStack.isEmpty()) {
@@ -51,7 +51,7 @@ public class ContainerPortableCraftBench extends net.minecraft.inventory.Contain
             }
 
             if (slotStack.getCount() == stack.getCount()) {
-                return null;
+                return ItemStack.EMPTY;
             }
 
             slot.onTake(player, slotStack);
