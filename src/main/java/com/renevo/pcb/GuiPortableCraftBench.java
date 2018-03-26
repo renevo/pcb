@@ -18,8 +18,8 @@ public class GuiPortableCraftBench extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        this.fontRendererObj.drawString(I18n.translateToLocal(ItemPortableCraftBench.portableCraftBench.getUnlocalizedName() + ".name"), 8, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(I18n.translateToLocal(ItemPortableCraftBench.item.getUnlocalizedName() + ".name"), 8, 6, 4210752);
+        this.fontRenderer.drawString(I18n.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
     @Override

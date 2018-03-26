@@ -10,10 +10,10 @@ public class PortableCraftBenchGuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemMainhand().getItem() == ItemPortableCraftBench.portableCraftBench)
+        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemMainhand().getItem() == ItemPortableCraftBench.item)
             return new GuiPortableCraftBench(player.inventory, world, new BlockPos(x, y, z));
 
-        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemOffhand().getItem() == ItemPortableCraftBench.portableCraftBench)
+        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemOffhand().getItem() == ItemPortableCraftBench.item)
             return new GuiPortableCraftBench(player.inventory, world, new BlockPos(x, y, z));
 
         return null;
@@ -21,10 +21,10 @@ public class PortableCraftBenchGuiHandler implements IGuiHandler {
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemMainhand().getItem() == ItemPortableCraftBench.portableCraftBench)
+        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemMainhand().getItem() == ItemPortableCraftBench.item)
             return new ContainerPortableCraftBench(player.inventory, world, new BlockPos(x, y, z));
 
-        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemOffhand().getItem() == ItemPortableCraftBench.portableCraftBench)
+        if (id == PortableCraftBenchMod.GUI_PORTABLE_CRAFT_BENCH_ID && player.getHeldItemOffhand().getItem() == ItemPortableCraftBench.item)
             return new ContainerPortableCraftBench(player.inventory, world, new BlockPos(x, y, z));
 
         return null;

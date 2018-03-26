@@ -1,21 +1,14 @@
 package com.renevo.pcb;
 
-import net.minecraft.stats.*;
-import net.minecraftforge.common.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.eventhandler.*;
-import net.minecraftforge.fml.common.gameevent.*;
-import net.minecraftforge.fml.common.network.*;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = PortableCraftBenchMod.MODID, version = PortableCraftBenchMod.VERSION)
 public class PortableCraftBenchMod {
-
     public static final String MODID = "pcb";
     public static final String VERSION = "1.5.0";
-
-    public static Achievement achievementPcb = null;
 
     public static final int GUI_PORTABLE_CRAFT_BENCH_ID = 1;
 
@@ -25,30 +18,21 @@ public class PortableCraftBenchMod {
     @SidedProxy(clientSide = "com.renevo.pcb.ClientProxy", serverSide = "com.renevo.pcb.CommonProxy")
     public static CommonProxy proxy;
 
+    public static Logger logger;
+
+    @EventHandler
+    public void preinit(FMLPreInitializationEvent event) {
+        logger = event.getModLog();
+        proxy.preInitialization();
+    }
+
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        ItemPortableCraftBench.create();
-
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new PortableCraftBenchGuiHandler());
-
-        MinecraftForge.EVENT_BUS.register(this);
-
-        // 6 left, 0 up/down - since we are just adding a new achievement, we don't need an achievement page, this somehow just works...
-        achievementPcb = new Achievement("achievement.pcb", "pcb", 5, -4, ItemPortableCraftBench.portableCraftBench, AchievementList.BUILD_WORK_BENCH);
-        achievementPcb.registerStat();
-
         proxy.initialization();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInitialization();
-    }
-
-    @SubscribeEvent
-    public void onCraftItem(PlayerEvent.ItemCraftedEvent event) {
-        if (event.crafting.getItem() == ItemPortableCraftBench.portableCraftBench) {
-            event.player.addStat(achievementPcb, 1);
-        }
     }
 }
